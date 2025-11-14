@@ -1,405 +1,183 @@
 <!DOCTYPE html>
-<!-- saved from url=(0050)file:///C:/Users/CLIENTE/Documents/GAIA/index.html -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Gaia Trekking — Agenda de Trilhas</title>
-
-  <!-- Fonte simples (se preferir, remova a importação) -->
-  <link href="./index_files/css2" rel="stylesheet">
-
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaia Trekking 🌿</title>
   <style>
-    :root{
-      --bg:#070707;
-      --card:#0f0f10;
-      --muted:#9aa0a6;
-      --accent:#e6e6e6;
-      --accent-2:#bfbfbf;
-      --glass: rgba(255,255,255,0.03);
-      --radius:14px;
-      --maxw:980px;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      line-height: 1.6;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg,var(--bg),#020202);
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:32px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:24px;
-      min-height:100vh;
+    header {
+      padding: 20px;
+      background-color: #141414;
+      border-bottom: 1px solid #222;
     }
-
-    .wrap{
-      width:100%;
-      max-width:var(--maxw);
+    header h1 {
+      margin: 0;
+      font-size: 1.6em;
+      color: #fff;
     }
-
-    header{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding:18px;
-      border-radius:12px;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.6);
-      margin-bottom:18px;
+    header p {
+      margin: 5px 0 0;
+      color: #aaa;
     }
-
-    .logo{
-      width:84px;
-      height:84px;
-      flex:0 0 84px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:10px;
-      background:var(--glass);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.03);
+    header a {
+      color: #9be97f;
+      text-decoration: none;
     }
-    .logo img{ width:100%; height:100%; object-fit:contain; display:block; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6)); }
-
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
     }
-    .brand h1{
-      margin:0;
-      font-size:20px;
-      letter-spacing:2px;
-      color:var(--accent);
+    section {
+      margin-bottom: 40px;
     }
-    .brand p{ margin:0; color:var(--muted); font-size:13px }
-
-    main{
-      background:transparent;
+    h2 {
+      color: #9be97f;
+      border-left: 4px solid #9be97f;
+      padding-left: 10px;
     }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 360px;
-      gap:18px;
+    .card {
+      background: #1a1a1a;
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border-left: 4px solid #9be97f;
     }
-
-    /* AGENDA */
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);
-      padding:16px;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      border-top: 1px solid #222;
     }
-
-    .card h2{
-      margin:0 0 12px 0;
-      font-size:18px;
-      color:var(--accent);
-    }
-
-    .mes{
-      margin-bottom:12px;
-    }
-    .mes h3{
-      margin:0 0 8px 0;
-      font-size:15px;
-      color:var(--accent-2);
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    ul.agenda{
-      list-style:none;
-      margin:0;
-      padding:0;
-    }
-    li.trilha{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      padding:10px;
-      border-radius:10px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-      margin-bottom:8px;
-      align-items:center;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-    .trilha .left{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      min-width:0;
-    }
-    .titulo{
-      font-weight:600;
-      color:var(--accent);
-      font-size:14px;
-      text-overflow:ellipsis;
-      overflow:hidden;
-      white-space:nowrap;
-    }
-    .meta{
-      font-size:13px;
-      color:var(--muted);
-    }
-    .status{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.02);
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    /* SIDEBAR CONTACT */
-    .sidebar .contact-item{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:10px;
-      background:rgba(255,255,255,0.01);
-      padding:10px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-    .sidebar .contact-item small{ color:var(--muted); display:block; font-size:12px }
-    .sidebar .contact-item a{ color:var(--accent); text-decoration:none; font-weight:600 }
-
-    .sobre{
-      margin-top:14px;
-      line-height:1.5;
-      color:var(--muted);
-      font-size:14px;
-      background:rgba(255,255,255,0.01);
-      padding:12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    footer{
-      margin-top:18px;
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    /* responsivo */
-    @media (max-width:980px){
-      .grid{ grid-template-columns: 1fr; }
-      .sidebar{ order:2 }
-    }
-    @media (max-width:420px){
-      .logo{ width:64px; height:64px; flex:0 0 64px; }
+    footer a {
+      color: #9be97f;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">
-        <!-- Coloque o arquivo do logo na mesma pasta e nomeie como logo.png -->
-        <img src="file:///C:/Users/CLIENTE/Documents/GAIA/Design%20sem%20nome.png" alt="Gaia Trekking Logo" id="logoImg" style="cursor: pointer;">
+
+  <header>
+    <h1>GAIA TREKKING</h1>
+    <p>Trilhas, campings e travessias — conectando você à mãe natureza 🌱</p>
+    <p>Instagram: <a href="https://instagram.com/gaia__trekking" target="_blank">@gaia__trekking</a></p>
+  </header>
+
+  <main>
+    <section>
+      <h2>🌄 Próximas Trilhas</h2>
+
+      <div class="card">
+        <strong>📆 22 e 23 de novembro</strong><br>
+        Rapel e Camping — Pedreira Fênix (SP)
       </div>
 
-      <div class="brand">
-        <h1>GAIA TREKKING</h1>
-        <p>Trilhas, campings e travessias — conectando você à mãe natureza 🌿</p>
-        <small style="color:var(--muted)">Instagram: <a href="https://www.instagram.com/gaia__trekking/" target="_blank" style="color:var(--accent); text-decoration:none">@gaia__trekking</a></small>
+      <div class="card">
+        <strong>📆 28 a 30 de novembro</strong><br>
+        São Tomé das Letras (MG)
       </div>
-    </header>
 
-    <main class="grid">
-      <!-- AGENDA -->
-      <section class="card">
-        <h2>Agenda de Trilhas</h2>
-        <div id="agendaContainer"><div class="mes card"><h3>Novembro</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Travessia Rio do Ouro x Rio Perequê — Parceria com Mais Trilhas</div><div class="meta">Data: 8 · FECHADO</div></div><div class="status">FECHADO</div></li><li class="trilha"><div class="left"><div class="titulo">Camping Rapel - Pedreira Fênix</div><div class="meta">Data: 22-23</div></div><div class="status">ABERTO</div></li><li class="trilha"><div class="left"><div class="titulo">São Tomé das Letras - MG</div><div class="meta">Data: 29-30 · Lista de Espera</div></div><div class="status">LISTA</div></li></ul></div><div class="mes card"><h3>Dezembro</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Sem eventos marcados</div><div class="meta">Data: —</div></div><div class="status">-</div></li></ul></div><div class="mes card"><h3>Janeiro 2026</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Travessia Cunha x Paraty</div><div class="meta">Data: 23,24,25</div></div><div class="status">ABERTO</div></li></ul></div><div class="mes card"><h3>Fevereiro</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Praia do Sono x Cachoeira do Saco Bravo</div><div class="meta">Data: 27,28 &amp; 01/03</div></div><div class="status">ABERTO</div></li></ul></div><div class="mes card"><h3>Março</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Férias (sem eventos programados)</div><div class="meta">Data: —</div></div><div class="status">-</div></li></ul></div><div class="mes card"><h3>Abril</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Travessia Lapinha da Serra x Tabuleiro</div><div class="meta">Data: 2,3,4,5</div></div><div class="status">ABERTO</div></li></ul></div><div class="mes card"><h3>Maio</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Travessia Petro x Tere</div><div class="meta">Data: 30/03 a 03/04</div></div><div class="status">ABERTO</div></li></ul></div><div class="mes card"><h3>Junho</h3><ul class="agenda"><li class="trilha"><div class="left"><div class="titulo">Ibitipoca</div><div class="meta">Data: 26,27,28</div></div><div class="status">ABERTO</div></li></ul></div></div>
-        <footer style="margin-top:12px;">
-          <small style="color:var(--muted)">Última atualização: <span id="lastUpdate">05/11/2025, 15:34:41</span></small>
-        </footer>
-      </section>
+      <div class="card">
+        <strong>📆 6 e 7 de dezembro</strong><br>
+        Confraternização Gaia Trekking — Paranapiacaba (SP)
+      </div>
 
-      <!-- SIDEBAR: contato + sobre -->
-      <aside class="card sidebar">
-        <h2>Contato</h2>
+      <div class="card">
+        <strong>📆 26 a 28 de dezembro</strong><br>
+        Travessia Rio Branquinho — Parelheiros ✕ Itanhaém (SP)
+      </div>
 
-        <div class="contact-item">
-          <div>
-            <small>Organizador</small>
-            <div style="font-weight:600">Caio Belo</div>
-          </div>
-          <div style="text-align:right">
-            <a href="tel:+5511987037674">11 98703-7674</a>
-            <small style="display:block;color:var(--muted)">WhatsApp</small>
-          </div>
-        </div>
+      <h2>📅 Agenda 2026</h2>
 
-        <div class="contact-item">
-          <div>
-            <small>Contato</small>
-            <div style="font-weight:600">Tubaina</div>
-          </div>
-          <div style="text-align:right">
-            <a href="tel:+55119991263323">11 99126-3323</a>
-            <small style="display:block;color:var(--muted)">WhatsApp</small>
-          </div>
-        </div>
+      <div class="card">
+        <strong>📆 23 a 25 de janeiro</strong><br>
+        Travessia Cunha ✕ Paraty (SP/RJ)
+      </div>
 
-        <div class="contact-item">
-          <div>
-            <small>Instagram</small>
-            <div style="font-weight:600">@gaia__trekking</div>
-          </div>
-          <div style="text-align:right">
-            <a href="https://www.instagram.com/gaia__trekking/" target="_blank">Abrir</a>
-            <small style="display:block;color:var(--muted)">Siga nossas aventuras</small>
-          </div>
-        </div>
+      <div class="card">
+        <strong>📆 27 de fevereiro a 1 de março</strong><br>
+        Praia do Sono + Saco Bravo (RJ)
+      </div>
 
-        <div class="sobre">
-          <strong>Sobre nós</strong>
-          <p id="sobreTexto" style="margin-top:8px;">
-            Somos um grupo de trilhas aberto (0800) que organiza viagens e campings com foco em vivências autênticas na natureza.
-            Resgatamos a essência da Mãe Natureza, priorizando experiências colaborativas, respeito ao meio ambiente e
-            conexão real entre pessoas e paisagens. Trilhas, travessias e acampamentos pensados para todos que querem sentir a natureza de verdade.
-          </p>
-        </div>
-      </aside>
-    </main>
-  </div>
+      <div class="card">
+        <strong>📆 2 a 5 de abril</strong><br>
+        Travessia Lapinha ✕ Tabuleiro (MG)
+      </div>
 
-  <script>
-    /**********************************************
-     * EDITAR AGENDA:
-     * Cada item em `trilhas` representa um evento.
-     * Campos: month (texto), date (texto), title, notes (opcional), status (ex: ABERTO, FECHADO, LISTA DE ESPERA)
-     * Adicione/edite eventos diretamente neste array.
-     **********************************************/
-    const trilhas = [
-      { month: "Novembro", date: "8", title: "Travessia Rio do Ouro x Rio Perequê — Parceria com Mais Trilhas", notes:"FECHADO", status:"FECHADO" },
-      { month: "Novembro", date: "22-23", title: "Camping Rapel - Pedreira Fênix", notes:"", status:"ABERTO" },
-      { month: "Novembro", date: "29-30", title: "São Tomé das Letras - MG", notes:"Lista de Espera", status:"LISTA" },
+      <div class="card">
+        <strong>📆 30 de abril a 3 de maio</strong><br>
+        Travessia Petrópolis ✕ Teresópolis (RJ)
+      </div>
 
-      { month: "Dezembro", date: "-", title: "Sem eventos marcados", notes:"", status:"-" },
+      <div class="card">
+        <strong>📆 15 a 17 de maio</strong><br>
+        Aniversário Gaia — Chácara (mais informações em breve)
+      </div>
 
-      { month: "Janeiro 2026", date: "23,24,25", title: "Travessia Cunha x Paraty", notes:"", status:"ABERTO" },
+      <div class="card">
+        <strong>📆 12 a 14 de junho</strong><br>
+        Festa Junina Gaia — (mais informações em breve)
+      </div>
 
-      { month: "Fevereiro", date: "27,28 & 01/03", title: "Praia do Sono x Cachoeira do Saco Bravo", notes:"", status:"ABERTO" },
+      <div class="card">
+        <strong>📆 26 a 28 de junho</strong><br>
+        Expedição Ibitipoca (MG)
+      </div>
 
-      { month: "Março", date: "-", title: "Férias (sem eventos programados)", notes:"", status:"-" },
+      <div class="card">
+        <strong>📆 24 a 26 de julho</strong><br>
+        Travessia Marins ✕ Itaguaré (SP)
+      </div>
 
-      { month: "Abril", date: "2,3,4,5", title: "Travessia Lapinha da Serra x Tabuleiro", notes:"", status:"ABERTO" },
+      <div class="card">
+        <strong>📆 14 a 16 de agosto</strong><br>
+        Visconde de Mauá (RJ/MG)
+      </div>
 
-      { month: "Maio", date: "30/03 a 03/04", title: "Travessia Petro x Tere", notes:"", status:"ABERTO" },
+      <div class="card">
+        <strong>📆 4 a 7 de setembro</strong><br>
+        Travessia Borrifos ✕ Castelhanos — Ilhabela (SP)
+      </div>
 
-      { month: "Junho", date: "26,27,28", title: "Ibitipoca", notes:"", status:"ABERTO" },
-    ];
+      <div class="card">
+        <strong>📆 9 a 12 de outubro</strong><br>
+        Caminho do Ouro (SP/RJ)
+      </div>
 
-    // Renderização: agrupa por month em ordem de aparição no array
-    function renderAgenda(list){
-      const container = document.getElementById('agendaContainer');
-      container.innerHTML = '';
+      <div class="card">
+        <strong>📆 31 de outubro a 2 de novembro</strong><br>
+        Travessia Juatinga (RJ)
+      </div>
 
-      // Agrupar por mês (mantendo ordem)
-      const grupos = [];
-      for (const item of list){
-        let g = grupos.find(x => x.month === item.month);
-        if (!g) {
-          g = { month: item.month, items: [] };
-          grupos.push(g);
-        }
-        g.items.push(item);
-      }
+      <div class="card">
+        <strong>📆 4 a 6 de dezembro</strong><br>
+        Confraternização Gaia — São Tomé das Letras (MG)
+      </div>
+    </section>
 
-      grupos.forEach(g => {
-        const mesEl = document.createElement('div');
-        mesEl.className = 'mes card';
-        const h3 = document.createElement('h3');
-        h3.innerText = g.month;
-        mesEl.appendChild(h3);
+    <section>
+      <h2>🌍 Sobre o Gaia</h2>
+      <p>O Gaia Trekking nasceu da paixão por aventuras, natureza e conexões verdadeiras. Nosso propósito é proporcionar experiências transformadoras, conectando pessoas à energia da Terra e às belezas do Brasil 🌿.</p>
+    </section>
 
-        const ul = document.createElement('ul');
-        ul.className = 'agenda';
+    <section>
+      <h2>📩 Contato</h2>
+      <p>📱 WhatsApp: <a href="https://wa.me/11991263323" target="_blank">Clique para conversar</a></p>
+      <p>📸 Instagram: <a href="https://instagram.com/gaia__trekking" target="_blank">@gaia__trekking</a></p>
+      <p>📧 E-mail: contato@gaiatrekking.com</p>
+    </section>
+  </main>
 
-        g.items.forEach(ev => {
-          const li = document.createElement('li');
-          li.className = 'trilha';
+  <footer>
+    © 2025 Gaia Trekking — Conecte-se com a natureza 🌎
+  </footer>
 
-          const left = document.createElement('div');
-          left.className = 'left';
-
-          const title = document.createElement('div');
-          title.className = 'titulo';
-          title.innerText = ev.title;
-
-          const meta = document.createElement('div');
-          meta.className = 'meta';
-          meta.innerText = (ev.date && ev.date !== '-') ? `Data: ${ev.date}` : 'Data: —';
-          if (ev.notes) meta.innerText += " · " + ev.notes;
-
-          left.appendChild(title);
-          left.appendChild(meta);
-
-          const status = document.createElement('div');
-          status.className = 'status';
-          status.innerText = ev.status || '';
-
-          li.appendChild(left);
-          li.appendChild(status);
-
-          ul.appendChild(li);
-        });
-
-        mesEl.appendChild(ul);
-        container.appendChild(mesEl);
-      });
-
-      // atualizar data de última alteração
-      document.getElementById('lastUpdate').innerText = new Date().toLocaleString();
-    }
-
-    // Inicializa
-    renderAgenda(trilhas);
-
-    // Pequena utilidade: permitir trocar logo arrastando/colando uma URL ou arquivo local
-    // (se preferir, apenas substitua o arquivo no disco)
-    (function enableLogoDrop(){
-      const logo = document.getElementById('logoImg');
-      logo.style.cursor = 'pointer';
-      // Ao clicar, abra seletor de arquivo para trocar a imagem (funciona localmente)
-      logo.addEventListener('click', () => {
-        const inp = document.createElement('input');
-        inp.type = 'file';
-        inp.accept = 'image/*';
-        inp.onchange = e => {
-          const f = e.target.files[0];
-          if (!f) return;
-          const url = URL.createObjectURL(f);
-          logo.src = url;
-        };
-        inp.click();
-      });
-    })();
-
-    // Função utilitária: adicionar nova trilha via console (exemplo)
-    // Exemplo de uso no console do navegador:
-    // addTrilha({month:"Julho", date:"10", title:"Caminhada X", notes:"", status:"ABERTO"})
-    function addTrilha(item){
-      trilhas.push(item);
-      renderAgenda(trilhas);
-    }
-    // exponha para devtools
-    window.addTrilha = addTrilha;
-
-  </script>
-
-
-</body></html>
+</body>
+</html>
