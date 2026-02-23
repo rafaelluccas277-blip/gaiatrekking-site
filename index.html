@@ -1,171 +1,722 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaia Trekking 🌿</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d;
-      color: #f1f1f1;
-      line-height: 1.6;
-    }
-    header {
-      padding: 20px;
-      background-color: #141414;
-      border-bottom: 1px solid #222;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.6em;
-      color: #fff;
-    }
-    header p {
-      margin: 5px 0 0;
-      color: #aaa;
-    }
-    header a {
-      color: #9be97f;
-      text-decoration: none;
-    }
-    main {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    h2 {
-      color: #9be97f;
-      border-left: 4px solid #9be97f;
-      padding-left: 10px;
-    }
-    .card {
-      background: #1a1a1a;
-      padding: 15px 20px;
-      margin: 10px 0;
-      border-radius: 10px;
-      border-left: 4px solid #9be97f;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      border-top: 1px solid #222;
-    }
-    footer a {
-      color: #9be97f;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta  http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>GAIA TRIP</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="56x56"
+      href="assets/images/fav-icon/icon.png"
+    />
+    <!-- bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/bootstrap.min.css"
+      type="text/css"
+      media="all"
+    />
 
-  <header>
-    <h1>GAIA TREKKING</h1>
-    <p>Trilhas, campings e travessias — conectando você à mãe natureza 🌱</p>
-    <p>Instagram: <a href="https://www.instagram.com/gaia__trekking?igsh=MXNmejVvYm1jZzB3Yw==" target="_blank">@gaia__trekking</a></p>
-  </header>
+    <!-- animate CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/animate.css"
+      type="text/css"
+      media="all"
+    />
 
-  <main>
-    <section>
-      <h2>🌄 Próximas Trilhas 2026</h2>
+    <!-- font-awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/all.min.css"
+      type="text/css"
+      media="all"
+    />
+    <!-- font-flaticon CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/flaticon.css"
+      type="text/css"
+      media="all"
+    />
+    <!-- theme-default CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/theme-default.css"
+      type="text/css"
+      media="all"
+    />
 
-      <div class="card">
-        <strong>📆 27 de fevereiro a 1 de março</strong><br>
-        Praia do Sono + Saco Bravo (RJ)
+    <!-- meanmenu CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/meanmenu.min.css"
+      type="text/css"
+      media="all"
+    />
+    <!-- venobox CSS -->
+    <link
+      rel="stylesheet"
+      href="venobox/venobox.css"
+      type="text/css"
+      media="all"
+    />
+    <!-- bootstrap icons -->
+    <link
+      rel="stylesheet"
+      href="assets/css/bootstrap-icons.css"
+      type="text/css"
+      media="all"
+    />
+     <!-- magnific popup css -->
+     <link
+     rel="stylesheet"
+     href="assets/css/magnific-popup.css"
+     type="text/css"
+     media="all"
+   />
+
+     <!-- carousel css -->
+     <link
+     rel="stylesheet"
+     href="assets/css/owl.carousel.min.css"
+     type="text/css"
+     media="all"
+   />
+
+    <!-- Main Style CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/css/style.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="assets/css/odometer-theme-default.css" />
+    <!-- responsive CSS -->
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/responsive.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css" />
+    <!-- modernizr js -->
+    <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+  </head>
+  <body>
+    <!-- loder -->
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+      <div class="loder-section left-section"></div>
+      <div class="loder-section right-section"></div>
+    </div>
+
+    <!-- Curser Pointer -->
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
+
+  <!--==================================================-->
+  <!-- Start gaia Main Menu Area -->
+  <!--==================================================-->
+  <div id="sticky-header" class="hikey_nav_manu">
+    <div class="container">
+      <div class="row menu-bg d-flex align-items-center">
+        <div class="col-lg-2">
+          <div class="logo">
+            <a class="logo_img" href="index.html" title="Gaia">
+              <img src="assets/images/logo.png" alt="logo">
+            </a>
+            <a class="main_sticky" href="index.html" title="Gaia">
+              <img src="assets/images/logo.png" alt="astute">
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-7">
+          <nav class="hikey_menu">
+            <ul class="nav_scroll">
+            </ul>
+          </nav>
+        </div>
+        <div class="col-xl-2 col-lg-3">
+          <div class="header-btn">
+            <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações"
+   target="_blank">Quero trilhar<i class="fa-solid fa-plus"></i></a>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <strong>📆 2 a 5 de abril</strong><br>
-        Travessia Lapinha ✕ Tabuleiro (MG)
+
+  <!-- gaia Mobile Menu Area -->
+  <div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
+    <div class="mobile-menu">
+      <nav class="hikey_menu">
+        <ul class="nav_scroll">
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!--==================================================-->
+  <!-- End gaia Main Menu Area -->
+  <!--==================================================-->
+
+
+
+
+  <!--==================================================-->
+      <!--start gaia breadcumb Area-->
+  <!--==================================================-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcumb-content text-center">
+                      <h4>Trilhas 2026</h4>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <!--==================================================-->
+       <!--end gaia breadcumb Area-->
+    <!--==================================================-->
+
+
+
+
+
+
+    
+  <!--==================================================-->
+      <!--start gaia destination area-->
+  <!--==================================================-->
+  <div class="destination-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+              <div class="section-title text-center">
+                <div class="section-sub-title">
+                  <h5>Nossos destinos</h5>
+                </div>
+                <div class="section-main-title">
+                  <h1>Abaixo as trilhas que faremos<br>em 2026</h1>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="single-destination-box">
+                    <div class="destination-title">
+                        <h4><s>Travessia Cunha x Paraty (SP/RJ)</s></h4>
+                        <span>23 a 25 de Janeiro (Concluído)</span>
+                    </div>
+                    <div class="destination-thumb">
+                        <img src="assets/images/home-1/destination-img1.jpg" alt="img">
+                        <div class="color-overlay"></div>
+                    </div>
+                    <div class="destination-content">
+                      <div class="destination-meta">
+                        <a><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                        <p><span><i class="fa-solid fa-users"></i></span>15 pessoas</p>
+                      </div>
+                      <h3><a>Nível: Moderado</a></h3>
+                      <div class="destination-desc">
+                          <p>Travessia histórica da Serra do Mar por um antigo caminho de pedras em meio a floresta que tinha finalidade de escoar o café produzido no Vale do Paraíba.</p>
+                      </div>
+                      <div class="destination-button">
+                        <a><s>EU QUERO</s><i class="fa-solid fa-plus"></i></a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Praia do Sono + Saco Bravo<br>(RJ)</h4>
+                      <span>27 de Fevereiro a 01 de Março</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img2.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a><span><i class="fa-regular fa-calendar-days"></i>03 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Fácil</a></h3>
+                    <div class="destination-desc">
+                        <p>Aventura que combina beleza natural e desafio, passando por praias paradisíacas como Antigos e Antiguinhos até chegar à cachoeira que deságua no mar.</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20trilha%20da%20Praia%20do%20Sono!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Travessia Lapinha ✕ Tabuleiro (MG)</h4>
+                      <span>02 a 05 de abril</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img3.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>04 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Moderado a difícil</a></h3>
+                    <div class="destination-desc">
+                        <p>Uma das mais clássicas travessia inesquecível pela Serra do Espinhaço, unindo aventura, natureza extrema e paisagens de tirar o fôlego!</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20travessia%20Lapinha%20Tabuleiro!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Travessia Petrópolis ✕ Teresópolis (RJ)</h4>
+                      <span>30 de abril a 03 de maio</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img4.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>04 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>15 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Moderado</a></h3>
+                    <div class="destination-desc">
+                        <p>Um dos roteiros mais icônicos do Brasil, com paisagens de tirar o fôlego e a imersão completa na natureza selvagem da serra fluminense. </p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20trilha%20da%20Travessia%20Petrópolis%20Teresópolis!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="single-destination-box">
+                <div class="destination-title">
+                    <h4>Aniversário Gaia<br>(SP)</h4>
+                    <span>15 a 17 de Maio</span>
+                </div>
+                <div class="destination-thumb">
+                    <img src="assets/images/home-1/destination-img5.png" alt="img">
+                    <div class="color-overlay"></div>
+                </div>
+                <div class="destination-content">
+                  <div class="destination-meta">
+                    <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>2 dias</span></a>
+                    <p><span><i class="fa-solid fa-users"></i></span>30 pessoas</p>
+                  </div>
+                  <h3><a>Nível: Moderado</a></h3>
+                  <div class="destination-desc">
+                      <p>Soltaremos mais informações do niver em breve. <br>Nos siga no instagram e acompanhe sempre nossos passeios! </p>
+                  </div>
+                  <div class="destination-button">
+                    <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20Aniversário%20da%20Gaia!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="single-destination-box">
+                <div class="destination-title">
+                    <h4>Ilha Grande <br>(RJ)</h4>
+                    <span>18 de Maio a 01 de Junho</span>
+                </div>
+                <div class="destination-thumb">
+                    <img src="assets/images/home-1/destination-img6.png" alt="img">
+                    <div class="color-overlay"></div>
+                </div>
+                <div class="destination-content">
+                  <div class="destination-meta">
+                    <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>15 dias</span></a>
+                    <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                  </div>
+                  <h3><a>Nível: Moderado</a></h3>
+                  <div class="destination-desc">
+                      <p>Coberta pela Mata Atlântica e atravessada por trilhos sinuosos.Praia de Lopes Mendes, Lagoa Azul e a Vila do Abraão.</p>
+                  </div>
+                  <div class="destination-button">
+                    <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20Ilha%20Grande!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="single-destination-box">
+                    <div class="destination-title">
+                        <h4>Festa Junina Gaia - (Mais informações em breve)</h4>
+                        <span>12 a 14 de junho</span>
+                    </div>
+                    <div class="destination-thumb">
+                        <img src="assets/images/home-1/destination-img7.png" alt="img">
+                        <div class="color-overlay"></div>
+                    </div>
+                    <div class="destination-content">
+                      <div class="destination-meta">
+                        <a><span><i class="fa-regular fa-calendar-days"></i>2 dias</span></a>
+                        <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                      </div>
+                      <h3><a>Nível: Fácil</a></h3>
+                      <div class="destination-desc">
+                          <p>Soltaremos mais informações da festa em breve. <br>Nos siga no instagram e acompanhe sempre nossos passeios! </p>
+                      </div>
+                      <div class="destination-button">
+                        <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20Festa%20Junina%20Gaia!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Expedição Ibitipoca<br>(MG)</h4>
+                      <span>26 a 28 de Junho</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img8.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Moderado</a></h3>
+                    <div class="destination-desc">
+                        <p>Cerca de 16 km (ida e volta) e duração de 8 horas. Passa por grutas (Cruz, 3 Arcos), pelo ponto mais alto (1784m) e termina na cachoeira com borda infinita.</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20expedição%20Ibitipoca!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Pico dos Marins<br>(SP)</h4>
+                      <span>24 a 26 de Julho</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img9.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Difícil</a></h3>
+                    <div class="destination-desc">
+                        <p>Desafio clássico de montanhismo com 2.420m de altitude e cerca de 12 a 14km (ida e volta) de nível difícil. O percurso leva de 4 a 8 horas.</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20do%20Pico%20do%20Marins!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Visconde de Mauá <br>(RJ/MG)</h4>
+                      <span>14 a 16 de Agosto</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img10.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Moderado</a></h3>
+                    <div class="destination-desc">
+                        <p>Diversas trilhas que exploram a Mata Atlântica e cachoeiras, com destaque para o Vale do Alcantilado, Pico da Pedra Selada, e os poços da Maromba.</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20de%20Visconde%20de%20Mauá!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="single-destination-box">
+                <div class="destination-title">
+                    <h4>Travessia Borrifos x Castelhanos<br>Ilhabela (SP)</h4>
+                    <span>04 a 07 de Setembro</span>
+                </div>
+                <div class="destination-thumb">
+                    <img src="assets/images/home-1/destination-img11.png" alt="img">
+                    <div class="color-overlay"></div>
+                </div>
+                <div class="destination-content">
+                  <div class="destination-meta">
+                    <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>03 dias</span></a>
+                    <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                  </div>
+                  <h3><a>Nível: Moderado</a></h3>
+                  <div class="destination-desc">
+                      <p>Travessia exigente que conecta o sul da ilha (Borrifos) à costa leste (Castelhanos), passando pela Praia do Bonete. O percurso total pode superar 25-30 km.</p>
+                  </div>
+                  <div class="destination-button">
+                    <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20travessia%20Borrifos%20Castelhanos!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="single-destination-box">
+                <div class="destination-title">
+                    <h4>Pico Itaguaré <br>(SP-MG)</h4>
+                    <span>25 a 27 de setembro</span>
+                </div>
+                <div class="destination-thumb">
+                    <img src="assets/images/home-1/destination-img12.png" alt="img">
+                    <div class="color-overlay"></div>
+                </div>
+                <div class="destination-content">
+                  <div class="destination-meta">
+                    <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                    <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                  </div>
+                  <h3><a>Nível: Moderado</a></h3>
+                  <div class="destination-desc">
+                      <p>Conhecido como "Pedra Sagrada", oferece uma trilha desafiadora com escalaminhadas (trepa-pedras), o famoso "Pulo do Gato" e vistas panorâmicas.</p>
+                  </div>
+                  <div class="destination-button">
+                    <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20do%20Pico%20Itaguaré!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="single-destination-box">
+                    <div class="destination-title">
+                        <h4>Caminho do Ouro <br>(SP/RJ)</h4>
+                        <span>12 a 14 de junho</span>
+                    </div>
+                    <div class="destination-thumb">
+                        <img src="assets/images/home-1/destination-img13.png" alt="img">
+                        <div class="color-overlay"></div>
+                    </div>
+                    <div class="destination-content">
+                      <div class="destination-meta">
+                        <a><span><i class="fa-regular fa-calendar-days"></i>2 dias</span></a>
+                        <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                      </div>
+                      <h3><a>Nível: Moderado</a></h3>
+                      <div class="destination-desc">
+                          <p> Travessia de aproximadamente 50 km, que conecta São José do Barreiro (SP) a Angra (RJ) através do Parque Nacional da Serra da Bocaina.</p>
+                      </div>
+                      <div class="destination-button">
+                        <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20do%20Caminho%20do%20Ouro!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Travessia Juatinga<br>(RJ)</h4>
+                      <span>31 de outubro a 02 de novembro</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img14.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Moderado</a></h3>
+                    <div class="destination-desc">
+                        <p>Conectando Paraty Mirim à Vila Oratório, a trilha passa por praias paradisíacas, vilas caiçaras e inclui pontos como Ponta Negra e a Cachoeira do Saco Bravo.</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20travessia%20Jutinga!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="single-destination-box">
+                  <div class="destination-title">
+                      <h4>Confraternização Gaia - São Tomé das Letras (MG)</h4>
+                      <span>04 a 06 de dezembro</span>
+                  </div>
+                  <div class="destination-thumb">
+                      <img src="assets/images/home-1/destination-img15.png" alt="img">
+                      <div class="color-overlay"></div>
+                  </div>
+                  <div class="destination-content">
+                    <div class="destination-meta">
+                      <a href="destination-details.html"><span><i class="fa-regular fa-calendar-days"></i>02 dias</span></a>
+                      <p><span><i class="fa-solid fa-users"></i></span>20 pessoas</p>
+                    </div>
+                    <h3><a>Nível: Moderado</a></h3>
+                    <div class="destination-desc">
+                        <p>Famosa por suas paisagens em quartzito (pedra são tomé), clima de montanha a 1400m de altitude e lendas exóticas. Venha confraternizar conosco</p>
+                    </div>
+                    <div class="destination-button">
+                      <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações%20da%20Confraternização%20da%20Gaia!"
+   target="_blank">EU QUERO<i class="fa-solid fa-plus"></i></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>        
+    </div>
+  </div>
+
+  <!--==================================================-->
+      <!--End gaia destination area-->
+  <!--==================================================-->
+
+
+    <!--==================================================-->
+    <!-- Start gaia Footer Area -->
+    <!--==================================================-->
+
+    <div class="footer-area style-one">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-logo">
+              <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+            </div>
+            <div class="footer-widget-desc">
+              <p>Trilhas, campings e travessias. Conectando você à Mãe natureza 🌱</p>
+            </div>
+            <div class="hikey-button one-style">
+              <a href="https://wa.me/5511987037674?text=Olá%20quero%20mais%20informações!"
+   target="_blank">Fale com a Gaia</a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget-content pl">
+              <div class="footer-widget-title">
+                <h4>Gaia trekking</h4>
+              </div>
+              <div class="footer-widget-menu">
+                <ul>
+                </ul>
+              </div>
+            </div>
+          </div>			
+        </div>
+        <div class="row align-items-center">
+          <div class="footer-bottom-area">
+            <div class="row">
+              <div class="col-lg-6 col-md-8">
+                <div class="footer-bottom-content">
+                  <p>© 2026 Gaia Trekking. Designed By Rodrigo Figueiredo</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-4">
+                <div class="footer-botton-social-icon">
+                  <ul>
+                    <!--<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+                    <li><a href="https://www.instagram.com/gaia__trekking" target="_blank"><i class="fa-brands fa-instagram"></i>
+                    <!--<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+      
+    <!--==================================================-->
+    <!-- end gaia Footer Area -->
+    <!--==================================================-->
 
-      <div class="card">
-        <strong>📆 30 de abril a 3 de maio</strong><br>
-        Travessia Petrópolis ✕ Teresópolis (RJ)
-      </div>
 
-      <div class="card">
-        <strong>📆 15 a 17 de maio</strong><br>
-        Aniversário Gaia
-      </div>
 
-	<div class="card">
-        <strong>📆 18 de maio a 1 de junho</strong><br>
-        Ilha Grande-RJ
-      </div>
+    <!--==================================================-->
+    <!-- Start scrollup section Area -->
+    <!--==================================================-->
 
-      <div class="card">
-        <strong>📆 12 a 14 de junho</strong><br>
-        Festa Junina Gaia — (mais informações em breve)
-      </div>
+    <div id="progress" class="progress hide">
+        <div id="progress-value"></div>
+    </div>
 
-      <div class="card">
-        <strong>📆 26 a 28 de junho</strong><br>
-        Expedição Ibitipoca (MG)
-      </div>
+    <!--==================================================-->
+    <!-- Start scrollup section Area -->
+    <!--==================================================-->
 
-      <div class="card">
-        <strong>📆 24 a 26 de julho</strong><br>
-       Pico dos Marins
-      </div>
 
-      <div class="card">
-        <strong>📆 14 a 16 de agosto</strong><br>
-        Visconde de Mauá (RJ/MG)
-      </div>
+    <script src="assets/js/vendor/jquery-3.6.2.min.js"></script>
 
-      <div class="card">
-        <strong>📆 4 a 7 de setembro</strong><br>
-        Travessia Borrifos ✕ Castelhanos — Ilhabela (SP)
-      </div>
+    <script src="assets/js/odometer.min.js"></script>
 
-		 <div class="card">
-        <strong>📆25 a 27 de setembro</strong><br>
-        Pico Itaguaré
-      </div>
+    <script src="assets/js/bootstrap.min.js"></script>
 
-      <div class="card">
-        <strong>📆 9 a 12 de outubro</strong><br>
-        Caminho do Ouro (SP/RJ)
-      </div>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
 
-      <div class="card">
-        <strong>📆 31 de outubro a 2 de novembro</strong><br>
-        Travessia Juatinga (RJ)
-      </div>
+    <script src="venobox/venobox.js"></script>
 
-      <div class="card">
-        <strong>📆 4 a 6 de dezembro</strong><br>
-        Confraternização Gaia — São Tomé das Letras (MG)
-      </div>
-    </section>
+    <script src="venobox/venobox.min.js"></script>
 
-    <section>
-      <h2>📩 Contato</h2>
+    <script src="assets/js/jquery.meanmenu.js"></script>
 
-      <p>📱 WhatsApp:</p>
+    <script src="assets/js/jquery.scrollUp.js"></script>
 
-      <div class="card">
-        <strong>Caio Belo:</strong> 11 98703-7674
-      </div>
+    <script src="assets/js/appear.js"></script>
 
-      <div class="card">
-        <strong>Tubaina:</strong> 11 99126-3323
-      </div>
+    <script src="assets/js/magnific-popup-js"></script>
 
-      <p>📸 Instagram: 
-        <a href="https://www.instagram.com/gaia__trekking?igsh=MXNmejVvYm1jZzB3Yw==" target="_blank">
-          @gaia__trekking
-        </a>
-      </p>
-    </section>
+    <script src="assets/js/jquery.barfiller.js"></script>
 
-    <section>
-      <h2>📢 Aviso Importante</h2>
-      <div class="card">
-        DATAS E EVENTOS SUJEITOS A ALTERAÇÃO COM AVISO PRÉVIO
+    <script src="assets/js/swiper-bundle.js"></script>
+
+    <script src="assets/js/owl.carousel.min.js"></script>
+
+    <script src="assets/js/theme.js"></script>
+
+    <script src="assets/js/my.js"></script>
+  </body>
+</html>
