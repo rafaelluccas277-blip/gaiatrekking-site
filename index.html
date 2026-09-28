@@ -7,18 +7,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 
+/* ============================================================
+   🎨 CORES DO SITE — EDITE AQUI SE QUISER MUDAR AS CORES
+   ============================================================ */
 :root{
-  --gold:#6a0ba1;
-  --gold-light:#a66ac9;
-  --gold-dim:rgba(201,162,39,.18);
-  --bg:#080808;
-  --card:#0f0f0f;
-  --text:#e8e0d0;
+  --violet:#8A2BE2;        /* Cor principal do site (violeta) */
+  --violet-light:#b07ae8;  /* Violeta mais claro */
+  --violet-glow:rgba(138,43,226,.25);  /* Brilho violeta */
+  --bg:#0a0a0a;            /* Fundo do site (quase preto) */
+  --card:#111111;          /* Fundo dos cards */
+  --text:#e8e0d0;          /* Cor do texto */
+  --earth:#8B7355;         /* Cor terrosa (detalhes de trilha) */
+  --green:#4ade80;         /* Fácil */
+  --yellow:#fbbf24;        /* Moderada */
+  --red:#f87171;           /* Difícil */
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
-/* ── TEXTURA DE FUNDO ── */
+/* ============================================================
+   🏔️ FUNDO DO SITE — Textura de trilha
+   ============================================================ */
 body{
   background-color:var(--bg);
   font-family:'Rajdhani', sans-serif;
@@ -28,7 +37,7 @@ body{
   cursor:default;
 }
 
-/* Grain overlay */
+/* Textura de granulado (efeito de terra/pedra) */
 body::before{
   content:'';
   position:fixed; inset:0;
@@ -36,7 +45,7 @@ body::before{
   pointer-events:none; z-index:0; opacity:.6;
 }
 
-/* Linhas diagonais de fundo */
+/* Linhas diagonais de fundo (estilo trilha) */
 body::after{
   content:'';
   position:fixed; inset:0;
@@ -44,13 +53,55 @@ body::after{
     -45deg,
     transparent,
     transparent 60px,
-    rgba(201,162,39,.018) 60px,
-    rgba(201,162,39,.018) 61px
+    rgba(138,43,226,.015) 60px,
+    rgba(138,43,226,.015) 61px
   );
   pointer-events:none; z-index:0;
 }
 
-/* ── LOGO ── */
+/* ============================================================
+   ✨ VAGALUMES — Efeito de luzes flutuantes no fundo
+   ============================================================ */
+.fireflies{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.firefly{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:var(--violet-light);
+  border-radius:50%;
+  opacity:0;
+  animation: fireflyFloat var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  box-shadow:0 0 6px 1px var(--violet-glow);
+}
+
+@keyframes fireflyFloat{
+  0%, 100%{
+    opacity:0;
+    transform:translate(0, 0);
+  }
+  10%{
+    opacity:.8;
+  }
+  50%{
+    opacity:.4;
+    transform:translate(var(--move-x), var(--move-y));
+  }
+  90%{
+    opacity:.6;
+  }
+}
+
+/* ============================================================
+   🏔️ LOGO
+   ============================================================ */
 .logo-wrap{
   position:relative; z-index:1;
   display:flex; justify-content:center;
@@ -60,11 +111,12 @@ body::after{
 
 .logo-wrap img{
   max-width:180px; height:auto;
-  border-radius: 20%;
-  filter: drop-shadow(0 0 10px rgba(81, 51, 83, 0.4));
+  border-radius:20%;
 }
 
-/* ── HERO ── */
+/* ============================================================
+   🗻 HERO (TÍTULO PRINCIPAL)
+   ============================================================ */
 header{
   position:relative; z-index:1;
   padding:32px 20px 70px;
@@ -76,7 +128,7 @@ header{
   font-size:.75rem;
   letter-spacing:6px;
   text-transform:uppercase;
-  color:var(--gold);
+  color:var(--violet);
   opacity:.8;
   margin-bottom:16px;
   animation: fadeDown .9s .1s ease both;
@@ -93,7 +145,7 @@ header h1{
 }
 
 header h1 span{
-  color:var(--gold);
+  color:var(--violet);
   font-weight:700;
 }
 
@@ -105,375 +157,466 @@ header h1 span{
 
 .hero-line::before, .hero-line::after{
   content:''; flex:1; height:1px;
-  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  background:linear-gradient(90deg, transparent, var(--violet), transparent);
 }
 
 .hero-sub{
   font-family:'Rajdhani'; font-size:.8rem;
   letter-spacing:4px; text-transform:uppercase;
-  color:var(--gold-light); opacity:.7;
+  color:var(--violet-light); opacity:.7;
 }
 
-/* ── CONTAINER ── */
+/* ============================================================
+   📦 CONTAINER PRINCIPAL
+   ============================================================ */
 .container{
   width:min(1200px,95%); margin:auto;
   position:relative; z-index:1;
 }
 
-/* ── GRID ── */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap:2px;
-  border:1px solid rgba(201,162,39,.2);
-  border-radius:2px;
+/* ============================================================
+   🗺️ TIMELINE DE EXPEDIÇÃO
+   ============================================================ */
+.timeline{
+  position:relative;
+  padding-left:40px;
 }
 
-/* ── CARD DE MÊS ── */
-.month{
-  background:var(--card);
-  border-right:1px solid rgba(201,162,39,.1);
-  border-bottom:1px solid rgba(201,162,39,.1);
+/* Linha vertical da trilha */
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:15px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(to bottom, var(--violet), var(--violet-light), var(--violet));
+  opacity:.3;
+}
+
+/* ============================================================
+   🗓️ ITEM DE MÊS (PARADA NA TRILHA)
+   ============================================================ */
+.month-item{
   position:relative;
-  overflow:hidden;
-  transition: background .35s;
+  margin-bottom:32px;
   opacity:0;
   animation: cardReveal .6s ease forwards;
 }
 
-.month:nth-child(1){ animation-delay:.1s }
-.month:nth-child(2){ animation-delay:.2s }
-.month:nth-child(3){ animation-delay:.3s }
-.month:nth-child(4){ animation-delay:.4s }
-.month:nth-child(5){ animation-delay:.5s }
-.month:nth-child(6){ animation-delay:.6s }
+.month-item:nth-child(1){ animation-delay:.1s }
+.month-item:nth-child(2){ animation-delay:.2s }
+.month-item:nth-child(3){ animation-delay:.3s }
+.month-item:nth-child(4){ animation-delay:.4s }
+.month-item:nth-child(5){ animation-delay:.5s }
+.month-item:nth-child(6){ animation-delay:.6s }
 
-/* Brilho no hover */
-.month::before{
+/* Ponto na trilha (estilo waypoint) */
+.month-item::before{
   content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(201,162,39,.08) 0%, transparent 70%);
-  opacity:0; transition: opacity .4s;
+  position:absolute;
+  left:-33px;
+  top:24px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--violet);
+  border:3px solid var(--bg);
+  box-shadow:0 0 0 2px var(--violet), 0 0 12px var(--violet-glow);
+  z-index:2;
 }
 
-.month:hover::before{ opacity:1; }
-.month:hover{ background:#141414; }
-
-/* Número grande decorativo */
-.month-bg-num{
-  position:absolute; bottom:-10px; right:10px;
-  font-family:'Cormorant Garamond', serif;
-  font-size:7rem; font-weight:700;
-  color:rgba(201,162,39,.04);
-  line-height:1; pointer-events:none;
-  user-select:none;
+/* ============================================================
+   🎫 CARD DO MÊS
+   ============================================================ */
+.month-card{
+  background:var(--card);
+  border:1px solid rgba(138,43,226,.15);
+  border-radius:8px;
+  overflow:hidden;
+  transition: all .3s ease;
 }
 
+.month-card:hover{
+  border-color:rgba(138,43,226,.4);
+  box-shadow:0 8px 32px rgba(138,43,226,.1);
+  transform:translateY(-2px);
+}
+
+/* Header do mês */
 .month-header{
-  display:flex; align-items:center; gap:12px;
-  padding:18px 22px 16px;
-  border-bottom:1px solid rgba(201,162,39,.15);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 24px;
+  background:linear-gradient(135deg, rgba(138,43,226,.08) 0%, transparent 100%);
+  border-bottom:1px solid rgba(138,43,226,.1);
 }
 
-.month-header-dot{
-  width:6px; height:6px; border-radius:50%;
-  background:var(--gold); flex-shrink:0;
-  box-shadow:0 0 8px var(--gold);
+.month-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-.month-header h2{
+.month-number{
   font-family:'Cormorant Garamond', serif;
-  font-size:1.15rem; font-weight:600;
-  letter-spacing:4px; text-transform:uppercase;
-  color:var(--gold);
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--violet);
+  line-height:1;
+  opacity:.9;
 }
 
-.event{
-  padding:14px 22px;
-  border-bottom:1px solid rgba(255,255,255,.04);
-  display:flex; gap:16px; align-items:flex-start;
-  transition: background .2s;
+.month-name{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.3rem;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--text);
 }
 
-.event:last-child{ border:none; }
-.event:hover{ background:rgba(201,162,39,.04); }
+.month-count{
+  font-family:'Rajdhani', sans-serif;
+  font-size:.75rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--violet-light);
+  background:rgba(138,43,226,.1);
+  padding:4px 12px;
+  border-radius:20px;
+  border:1px solid rgba(138,43,226,.2);
+}
 
-.date{
-  font-family:'Rajdhani'; font-size:.78rem;
-  letter-spacing:2px; color:var(--gold);
-  font-weight:600; min-width:52px; padding-top:2px;
+/* ============================================================
+   🥾 LISTA DE TRILHAS
+   ============================================================ */
+.trails-list{
+  padding:8px 0;
+}
+
+/* ============================================================
+   🥾 TRILHA INDIVIDUAL
+   ============================================================ */
+.trail{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:14px 24px;
+  border-bottom:1px solid rgba(255,255,255,.03);
+  transition: all .2s ease;
+  position:relative;
+}
+
+.trail:last-child{
+  border-bottom:none;
+}
+
+.trail:hover{
+  background:rgba(138,43,226,.05);
+  padding-left:28px;
+}
+
+/* Data da trilha */
+.trail-date{
+  font-family:'Rajdhani', sans-serif;
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:1px;
+  color:var(--violet);
+  min-width:50px;
+  padding-top:2px;
+  opacity:.9;
+}
+
+/* Ícone de dificuldade */
+.trail-difficulty{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  flex-shrink:0;
+  margin-top:6px;
+}
+
+.trail-difficulty.easy{ background:var(--green); box-shadow:0 0 6px var(--green); }
+.trail-difficulty.medium{ background:var(--yellow); box-shadow:0 0 6px var(--yellow); }
+.trail-difficulty.hard{ background:var(--red); box-shadow:0 0 6px var(--red); }
+
+/* Nome da trilha */
+.trail-name{
+  font-family:'Rajdhani', sans-serif;
+  font-size:.95rem;
+  font-weight:400;
+  line-height:1.5;
+  color:var(--text);
   opacity:.85;
+  flex:1;
 }
 
-.name{
-  font-family:'Rajdhani'; font-size:.95rem;
-  font-weight:400; line-height:1.5; color:var(--text);
-  opacity:.85;
-}
 
-/* ── RAPEL SEMANAL ── */
+
+/* ============================================================
+   🧗 RAPEL SEMANAL
+   ============================================================ */
 .rapel{
-  margin:40px 0 60px;
-  position:relative; overflow:hidden;
-  border:1px solid rgba(201,162,39,.35);
-  border-radius:2px;
+  margin:50px 0 60px;
+  position:relative;
+  border:1px solid rgba(138,43,226,.35);
+  border-radius:12px;
   padding:50px 40px;
   text-align:center;
-  background: linear-gradient(135deg, #0c0a00 0%, #0f0f0f 60%);
+  background:linear-gradient(135deg, #0c0810 0%, #0f0f0f 60%);
   animation: fadeUp .8s .7s ease both; opacity:0;
+  overflow:hidden;
+}
+
+/* Ícone de rapel decorativo */
+.rapel::before{
+  content:'🧗';
+  position:absolute;
+  top:-20px;
+  right:-20px;
+  font-size:120px;
+  opacity:.05;
+  transform:rotate(-15deg);
 }
 
 /* Cantos decorativos */
-.rapel::before, .rapel::after{
+.rapel::after{
   content:'';
-  position:absolute; width:30px; height:30px;
-  border-color:var(--gold); border-style:solid; opacity:.5;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(90deg, transparent, var(--violet), transparent);
 }
-.rapel::before{ top:12px; left:12px; border-width:1px 0 0 1px; }
-.rapel::after{  bottom:12px; right:12px; border-width:0 1px 1px 0; }
-
-/* Cantos opostos */
-.rapel-corner-b::before, .rapel-corner-b::after{
-  content:'';
-  position:absolute; width:30px; height:30px;
-  border-color:var(--gold); border-style:solid; opacity:.5;
-}
-.rapel-corner-b::before{ top:12px; right:12px; border-width:1px 1px 0 0; }
-.rapel-corner-b::after{  bottom:12px; left:12px; border-width:0 0 1px 1px; }
 
 .rapel-label{
-  font-family:'Rajdhani'; font-size:.72rem;
-  letter-spacing:6px; color:var(--gold);
-  text-transform:uppercase; opacity:.6; margin-bottom:14px;
+  font-family:'Rajdhani', sans-serif;
+  font-size:.72rem;
+  letter-spacing:6px;
+  color:var(--violet);
+  text-transform:uppercase;
+  opacity:.6;
+  margin-bottom:14px;
 }
 
 .rapel h2{
   font-family:'Cormorant Garamond', serif;
-  font-size:clamp(1.8rem,4vw,2.8rem); font-weight:300;
-  color:var(--text); letter-spacing:4px;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:300;
+  color:var(--text);
+  letter-spacing:4px;
   margin-bottom:28px;
 }
 
 .rapel h2 strong{
-  color:var(--gold); font-weight:700;
+  color:var(--violet);
+  font-weight:700;
 }
 
 .rapel-infos{
-  display:flex; flex-wrap:wrap; justify-content:center;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
   gap:8px 30px;
 }
 
 .rapel-info{
-  display:flex; align-items:center; gap:8px;
-  font-size:.9rem; letter-spacing:1px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.9rem;
+  letter-spacing:1px;
   opacity:.75;
 }
 
 .rapel-info::before{
-  content:''; width:4px; height:4px;
-  border-radius:50%; background:var(--gold);
+  content:'';
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--violet);
   flex-shrink:0;
 }
 
-/* ── FOOTER ── */
+/* ============================================================
+   🏔️ FOOTER (RODAPÉ)
+   ============================================================ */
 footer{
-  position:relative; z-index:1;
+  position:relative;
+  z-index:1;
   text-align:center;
   padding:32px 20px;
-  display:flex; align-items:center; justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   gap:20px;
-  border-top:1px solid rgba(201,162,39,.12);
+  border-top:1px solid rgba(138,43,226,.12);
 }
 
 .footer-brand{
   font-family:'Cormorant Garamond', serif;
-  font-size:1rem; letter-spacing:5px;
-  text-transform:uppercase; color:var(--gold);
+  font-size:1rem;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--violet);
   opacity:.5;
 }
 
 .footer-sep{
-  width:1px; height:18px;
-  background:rgba(201,162,39,.25);
+  width:1px;
+  height:18px;
+  background:rgba(138,43,226,.25);
 }
 
 footer a.insta-link{
-  display:inline-flex; align-items:center; gap:7px;
-  color:var(--gold-light); text-decoration:none;
-  font-family:'Rajdhani'; font-size:.8rem;
-  letter-spacing:2px; text-transform:uppercase;
-  opacity:.6; transition: opacity .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:var(--violet-light);
+  text-decoration:none;
+  font-family:'Rajdhani', sans-serif;
+  font-size:.8rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:.6;
+  transition:opacity .2s;
 }
 
 footer a.insta-link:hover{ opacity:1; }
 footer a.insta-link svg{ width:16px; height:16px; fill:currentColor; }
 
-/* ── WHATSAPP FLUTUANTE ── */
+/* ============================================================
+   💬 BOTÃO WHATSAPP FLUTUANTE
+   ============================================================ */
 .whatsapp-float{
-  position:fixed; bottom:32px; right:32px; z-index:999;
-  width:56px; height:56px;
+  position:fixed;
+  bottom:32px;
+  right:32px;
+  z-index:999;
+  width:56px;
+  height:56px;
   background:#25d366;
   border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow: 0 0 0 0 rgba(37,211,102,.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 0 0 rgba(37,211,102,.5);
   text-decoration:none;
-  /* Entrada: fadeUp. Depois que termina, fica opacity:1 e inicia o pulse via JS */
-  animation: fadeUp .6s 1.2s ease forwards;
+  animation:fadeUp .6s 1.2s ease forwards;
   opacity:0;
-  transition: transform .2s, box-shadow .2s;
+  transition:transform .2s, box-shadow .2s;
 }
 
 .whatsapp-float.pulsing{
-  animation: pulse 2.5s infinite;
+  animation:pulse 2.5s infinite;
 }
 
 .whatsapp-float:hover{
   transform:scale(1.1);
-  box-shadow: 0 8px 28px rgba(37,211,102,.5);
+  box-shadow:0 8px 28px rgba(37,211,102,.5);
 }
 
-.whatsapp-float svg{ width:28px; height:28px; fill:white; }
+.whatsapp-float svg{
+  width:28px;
+  height:28px;
+  fill:white;
+}
 
 .whatsapp-float::before{
   content:"Fale conosco";
-  position:absolute; right:66px;
+  position:absolute;
+  right:66px;
   background:rgba(10,10,10,.9);
-  border:1px solid rgba(201,162,39,.3);
-  color:var(--gold-light);
-  font-family:'Rajdhani'; font-size:.75rem;
-  letter-spacing:2px; text-transform:uppercase;
-  padding:6px 14px; border-radius:2px;
-  white-space:nowrap; opacity:0;
-  pointer-events:none; transition:opacity .2s;
+  border:1px solid rgba(138,43,226,.3);
+  color:var(--violet-light);
+  font-family:'Rajdhani', sans-serif;
+  font-size:.75rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:6px 14px;
+  border-radius:2px;
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s;
 }
 
 .whatsapp-float:hover::before{ opacity:1; }
 
-/* ── KEYFRAMES ── */
+/* ============================================================
+   ✨ ANIMAÇÕES
+   ============================================================ */
 @keyframes fadeDown{
   from{ opacity:0; transform:translateY(-20px); }
-  to{   opacity:1; transform:translateY(0); }
+  to{ opacity:1; transform:translateY(0); }
 }
 
 @keyframes fadeUp{
   from{ opacity:0; transform:translateY(24px); }
-  to{   opacity:1; transform:translateY(0); }
+  to{ opacity:1; transform:translateY(0); }
 }
 
 @keyframes cardReveal{
   from{ opacity:0; transform:translateY(16px); }
-  to{   opacity:1; transform:translateY(0); }
+  to{ opacity:1; transform:translateY(0); }
 }
 
 @keyframes pulse{
-  0%  { box-shadow:0 0 0 0 rgba(37,211,102,.55); }
-  70% { box-shadow:0 0 0 14px rgba(37,211,102,0); }
+  0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); }
+  70%{ box-shadow:0 0 0 14px rgba(37,211,102,0); }
   100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
 }
 
-/* ── RESPONSIVO ── */
+/* ============================================================
+   📱 RESPONSIVO (CELULAR)
+   ============================================================ */
 @media(max-width:600px){
   header h1{ letter-spacing:4px; }
   .rapel{ padding:36px 22px; }
   footer{ flex-wrap:wrap; gap:12px; }
   .footer-sep{ display:none; }
+  .timeline{ padding-left:30px; }
+  .timeline::before{ left:10px; }
+  .month-item::before{ left:-25px; width:10px; height:10px; }
+  .month-header{ padding:16px 18px; }
+  .trail{ padding:12px 18px; }
+  .trail:hover{ padding-left:22px; }
+  .month-number{ font-size:2rem; }
+  .month-name{ font-size:1.1rem; }
 }
 
 </style>
 </head>
 <body>
 
-<!-- LOGO -->
+<!-- ✨ VAGALUMES (fundo animado) -->
+<div class="fireflies" id="fireflies"></div>
+
+<!-- 🏔️ LOGO -->
 <div class="logo-wrap">
-  <img src="LOGO OFICIAL GAIA TREKKING.jpg" alt="Gaia Trekking">
+  <img src="LOGO OFICIAL GAIA TREKKING.png" alt="Gaia Trekking">
 </div>
 
-<!-- HERO -->
+<!-- 🗻 HERO -->
 <header>
-  <p class="hero-eyebrow">Expedições · Trilhas · Rapel</p>
+  <p class="hero-eyebrow">🏔️ Expedições · Trilhas · Rapel </p>
   <div class="hero-line">
     <span class="hero-sub">2026</span>
   </div>
 </header>
 
-<!-- CALENDÁRIO -->
+<!-- 📦 CONTEÚDO PRINCIPAL -->
 <div class="container">
 
-  <div class="grid">
+  <!-- 🗺️ TIMELINE DE EXPEDIÇÃO — Os cards de mês são gerados automaticamente pelo JavaScript -->
+  <div class="timeline" id="timeline"></div>
 
-    <div class="month">
-      <div class="month-bg-num">07</div>
-      <div class="month-header">
-        <div class="month-header-dot"></div>
-        <h2>Julho</h2>
-      </div>
-      <div class="event"><div class="date">10-12</div><div class="name">Praias Selvagens com Rapel no Pontal e tartaruga (Camping roots)</div></div>
-      <div class="event"><div class="date">18–19</div><div class="name">Arraiá Gaia Trekking - Vale das Bromélias (Camping Estruturado)</div></div>
-      <div class="event"><div class="date">24-26</div><div class="name">Travessia Marins × Itaguaré</div></div>
-    </div>
-
-    <div class="month">
-      <div class="month-bg-num">08</div>
-      <div class="month-header">
-        <div class="month-header-dot"></div>
-        <h2>AGOSTO</h2>
-      </div>
-      <div class="event"><div class="date">01–02</div><div class="name">Travessia 7 cumes - Serra do Ibitiraquire</div></div>
-      <div class="event"><div class="date">08</div><div class="name">Rapel Pedreira Dib 40M</div></div>
-      <div class="event"><div class="date">09</div><div class="name">Rapel Pedra do Estudante 25M</div></div>
-      <div class="event"><div class="date">14-15</div><div class="name">Pico do Lopo ( Trilha Noturna + Nascer do Sol + Rapel de 42M</div></div>
-      <div class="event"><div class="date">16</div><div class="name">Trilha do Rio Mogi Bate e volta</div></div>
-      <div class="event"><div class="date">22-23</div><div class="name">Travessia Petrópolis x Teresópolis</div></div>
-      <div class="event"><div class="date">28-30</div><div class="name">Circuito Marumbi — 4 cumes</div></div>
-    </div>
-
-    <div class="month">
-      <div class="month-bg-num">09</div>
-      <div class="month-header">
-        <div class="month-header-dot"></div>
-        <h2>SETEMBRO</h2>
-      </div>
-      <div class="event"><div class="date">04–07</div><div class="name">Travessia Rio Branquinho</div></div>
-      <div class="event"><div class="date">13</div><div class="name">Rapel Pedra do Estudante 25M</div></div>
-      <div class="event"><div class="date">18-20</div><div class="name">Teresópolis × Petrópolis</div></div>
-    </div>
-    <div class="event"><div class="date">27</div><div class="name">Rapel Morro do Maluf - Guaruja</div></div>
-    </div>
-
-    <div class="month">
-      <div class="month-bg-num">10</div>
-      <div class="month-header">
-        <div class="month-header-dot"></div>
-        <h2>outubro</h2>
-      </div>
-       <div class="event"><div class="date">03</div><div class="name">Escalavrado</div></div>
-      <div class="event"><div class="date">09–12</div><div class="name">Caminho do Ouro</div></div>
-      <div class="event"><div class="date">24–25</div><div class="name">Cachoeira Carlos Euler (Rapel 90M + acampamento)</div></div>
-    </div>
-
-    <div class="month">
-      <div class="month-bg-num">11</div>
-      <div class="month-header">
-        <div class="month-header-dot"></div>
-        <h2>Novembro</h2>
-      </div>
-      <div class="event"><div class="date">14–15</div><div class="name">Praia do Sono</div></div>
-    </div>
-
-    <div class="month">
-      <div class="month-bg-num">12</div>
-      <div class="month-header">
-        <div class="month-header-dot"></div>
-        <h2>Dezembro</h2>
-      </div>
-      <div class="event"><div class="date">04–06</div><div class="name">São Thomé das Letras</div></div>
-      <div class="event"><div class="date">12–13</div><div class="name">Confraternização Gaia Trekking (Local a definir)</div></div>
-    </div>
-
-  </div>
-
-  <!-- RAPEL SEMANAL -->
-  <div class="rapel rapel-corner-b">
+  <!-- 🧗 RAPEL SEMANAL -->
+  <div class="rapel">
     <p class="rapel-label">Toda semana</p>
     <h2>🧗 RAPEL <strong>SEMANAL</strong></h2>
     <div class="rapel-infos">
@@ -486,9 +629,9 @@ footer a.insta-link svg{ width:16px; height:16px; fill:currentColor; }
 
 </div>
 
-<!-- FOOTER —  -->
+<!-- 🏔️ FOOTER -->
 <footer>
-  <span class="footer-brand">Gaia Trekking</span>
+  <span class="footer-brand">🏔️ Gaia Trekking</span>
   <div class="footer-sep"></div>
   <a class="insta-link" href="https://instagram.com/gaia__trekking" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.225 7.15 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.668-.072-4.948-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
@@ -496,10 +639,155 @@ footer a.insta-link svg{ width:16px; height:16px; fill:currentColor; }
   </a>
 </footer>
 
-<!-- BOTÃO WHATSAPP -->
+<!-- 💬 BOTÃO WHATSAPP -->
 <a class="whatsapp-float" href="https://wa.me/5511987037674" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
+
+<!-- ============================================================
+     📝 DADOS DO CALENDÁRIO — EDITE AQUI!
+     ============================================================
+     ╔══════════════════════════════════════════════════════════╗
+     ║  COMO ADICIONAR UMA TRILHA:                             ║
+     ║  1. Copie um bloco de evento (data + name)               ║
+     ║  2. Cole no mês certo                                    ║
+     ║  3. Troque a data e o nome                               ║
+     ║                                                          ║
+     ║  COMO ADICIONAR UM MÊS NOVO:                            ║
+     ║  1. Copie um bloco de mês inteiro                        ║
+     ║  2. Cole no final da lista                               ║
+     ║  3. Troque o número, o nome e os eventos                  ║
+     ╚══════════════════════════════════════════════════════════╝
+     ============================================================ -->
+<script>
+const ROTEIROS = [
+  {
+    mes: "Julho",
+    numero: "07",
+    eventos: [
+      { data: "10-12", nome: "Praias Selvagens com Rapel no Pontal e tartaruga (Camping roots)", dificuldade: "hard", tag: "camping" },
+      { data: "18–19", nome: "Arraiá Gaia Trekking - Vale das Bromélias (Camping Estruturado)", dificuldade: "medium", tag: "camping" },
+      { data: "24-26", nome: "Travessia Marins × Itaguaré", dificuldade: "hard", tag: "travessia" }
+    ]
+  },
+  {
+    mes: "Agosto",
+    numero: "08",
+    eventos: [
+      { data: "01–02", nome: "Travessia 7 cumes - Serra do Ibitiraquire", dificuldade: "hard", tag: "travessia" },
+      { data: "08", nome: "Rapel Pedreira Dib 40M", dificuldade: "medium", tag: "rapel" },
+      { data: "09", nome: "Rapel Pedra do Estudante 25M", dificuldade: "easy", tag: "rapel" },
+      { data: "14-15", nome: "Pico do Lopo (Trilha Noturna + Nascer do Sol + Rapel de 42M)", dificuldade: "hard", tag: "noturna" },
+      { data: "16", nome: "Trilha do Rio Mogi Bate e volta", dificuldade: "easy", tag: "" },
+      { data: "22-23", nome: "Travessia Petrópolis x Teresópolis", dificuldade: "hard", tag: "travessia" },
+      { data: "28-30", nome: "Circuito Marumbi — 4 cumes", dificuldade: "hard", tag: "travessia" }
+    ]
+  },
+  {
+    mes: "Setembro",
+    numero: "09",
+    eventos: [
+      { data: "04–07", nome: "Travessia Rio Branquinho", dificuldade: "hard", tag: "travessia" },
+      { data: "12", nome: "Escalavrado", dificuldade: "medium", tag: "" },
+      { data: "13", nome: "Rapel Pedra do Estudante 25M", dificuldade: "easy", tag: "rapel" },
+      { data: "18-20", nome: "Teresópolis × Petrópolis", dificuldade: "hard", tag: "travessia" }
+    ]
+  },
+  {
+    mes: "Outubro",
+    numero: "10",
+    eventos: [
+      { data: "09–12", nome: "Caminho do Ouro", dificuldade: "medium", tag: "" },
+      { data: "24–25", nome: "Cachoeira Carlos Euler (Rapel 90M + acampamento)", dificuldade: "hard", tag: "rapel" }
+    ]
+  },
+  {
+    mes: "Novembro",
+    numero: "11",
+    eventos: [
+      { data: "14–15", nome: "Praia do Sono", dificuldade: "easy", tag: "" }
+    ]
+  },
+  {
+    mes: "Dezembro",
+    numero: "12",
+    eventos: [
+      { data: "04–06", nome: "São Thomé das Letras", dificuldade: "medium", tag: "" },
+      { data: "12–13", nome: "Confraternização Gaia Trekking (Local a definir)", dificuldade: "easy", tag: "" }
+    ]
+  }
+];
+
+// ============================================================
+// 🔧 GERADOR DOS CARDS — Não precisa editar abaixo desta linha
+// ============================================================
+const timeline = document.getElementById('timeline');
+
+ROTEIROS.forEach(mes => {
+  const item = document.createElement('div');
+  item.className = 'month-item';
+
+  let trailsHTML = '';
+  mes.eventos.forEach(ev => {
+    trailsHTML += `
+      <div class="trail">
+        <div class="trail-date">${ev.data}</div>
+        <div class="trail-difficulty ${ev.dificuldade}"></div>
+        <div class="trail-name">${ev.nome}</div>
+      </div>
+    `;
+  });
+
+  item.innerHTML = `
+    <div class="month-card">
+      <div class="month-header">
+        <div class="month-title">
+          <div class="month-number">${mes.numero}</div>
+          <div class="month-name">${mes.mes}</div>
+        </div>
+        <div class="month-count">${mes.eventos.length} ${mes.eventos.length === 1 ? 'trilha' : 'trilhas'}</div>
+      </div>
+      <div class="trails-list">
+        ${trailsHTML}
+      </div>
+    </div>
+  `;
+
+  timeline.appendChild(item);
+});
+</script>
+
+<script>
+  // ✨ Gerador de vagalumes — leve e com tema de trilha
+  const firefliesContainer = document.getElementById('fireflies');
+  const FIREFLY_COUNT = 15;
+
+  for (let i = 0; i < FIREFLY_COUNT; i++) {
+    const firefly = document.createElement('div');
+    firefly.className = 'firefly';
+
+    // Posição aleatória
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+
+    // Movimento aleatório
+    const moveX = (Math.random() - 0.5) * 200;
+    const moveY = (Math.random() - 0.5) * 200;
+
+    // Duração e delay aleatórios
+    const duration = 8 + Math.random() * 12;
+    const delay = Math.random() * 10;
+
+    firefly.style.left = `${x}%`;
+    firefly.style.top = `${y}%`;
+    firefly.style.setProperty('--move-x', `${moveX}px`);
+    firefly.style.setProperty('--move-y', `${moveY}px`);
+    firefly.style.setProperty('--duration', `${duration}s`);
+    firefly.style.setProperty('--delay', `${delay}s`);
+
+    firefliesContainer.appendChild(firefly);
+  }
+</script>
 
 <script>
   const btn = document.querySelector('.whatsapp-float');
