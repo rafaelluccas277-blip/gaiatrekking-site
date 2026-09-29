@@ -330,19 +330,6 @@ header h1 span{
   opacity:.9;
 }
 
-/* Ícone de dificuldade */
-.trail-difficulty{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  flex-shrink:0;
-  margin-top:6px;
-}
-
-.trail-difficulty.easy{ background:var(--green); box-shadow:0 0 6px var(--green); }
-.trail-difficulty.medium{ background:var(--yellow); box-shadow:0 0 6px var(--yellow); }
-.trail-difficulty.hard{ background:var(--red); box-shadow:0 0 6px var(--red); }
-
 /* Nome da trilha */
 .trail-name{
   font-family:'Rajdhani', sans-serif;
@@ -353,6 +340,23 @@ header h1 span{
   opacity:.85;
   flex:1;
 }
+
+/* Indicador de dificuldade (texto) */
+.trail-level{
+  font-family:'Rajdhani', sans-serif;
+  font-size:.65rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  padding:2px 8px;
+  border-radius:3px;
+  flex-shrink:0;
+  opacity:.8;
+  margin-top:2px;
+}
+
+.trail-level.easy{ color:var(--green); background:rgba(74,222,128,.1); }
+.trail-level.medium{ color:var(--yellow); background:rgba(251,191,36,.1); }
+.trail-level.hard{ color:var(--red); background:rgba(248,113,113,.1); }
 
 
 
@@ -579,9 +583,6 @@ footer a.insta-link svg{ width:16px; height:16px; fill:currentColor; }
   .rapel{ padding:36px 22px; }
   footer{ flex-wrap:wrap; gap:12px; }
   .footer-sep{ display:none; }
-  .timeline{ padding-left:30px; }
-  .timeline::before{ left:10px; }
-  .month-item::before{ left:-25px; width:10px; height:10px; }
   .month-header{ padding:16px 18px; }
   .trail{ padding:12px 18px; }
   .trail:hover{ padding-left:22px; }
@@ -729,11 +730,13 @@ ROTEIROS.forEach(mes => {
 
   let trailsHTML = '';
   mes.eventos.forEach(ev => {
+    const levelText = { easy: 'Fácil', medium: 'Moderada', hard: 'Difícil' };
+    const levelLabel = levelText[ev.dificuldade] || '';
     trailsHTML += `
       <div class="trail">
         <div class="trail-date">${ev.data}</div>
-        <div class="trail-difficulty ${ev.dificuldade}"></div>
         <div class="trail-name">${ev.nome}</div>
+        ${levelLabel ? `<span class="trail-level ${ev.dificuldade}">${levelLabel}</span>` : ''}
       </div>
     `;
   });
