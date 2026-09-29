@@ -361,6 +361,32 @@ header h1 span{
 
 
 /* ============================================================
+   📅 DIVISOR DE ANO
+   ============================================================ */
+.year-divider{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin:50px 0 40px;
+}
+
+.year-divider-line{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--violet), transparent);
+  opacity:.3;
+}
+
+.year-divider-text{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.5rem;
+  font-weight:600;
+  letter-spacing:6px;
+  color:var(--violet);
+  opacity:.8;
+}
+
+/* ============================================================
    🧗 RAPEL SEMANAL
    ============================================================ */
 .rapel{
@@ -613,8 +639,19 @@ footer a.insta-link svg{ width:16px; height:16px; fill:currentColor; }
 <!-- 📦 CONTEÚDO PRINCIPAL -->
 <div class="container">
 
-  <!-- 🗺️ TIMELINE DE EXPEDIÇÃO — Os cards de mês são gerados automaticamente pelo JavaScript -->
-  <div class="timeline" id="timeline"></div>
+  <!-- 🗺️ TIMELINE 2026 — Os cards de mês são gerados automaticamente pelo JavaScript -->
+  <div class="timeline" id="timeline-2026"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 🗺️ TIMELINE 2027 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="year-divider">
+    <div class="year-divider-line"></div>
+    <span class="year-divider-text">2027</span>
+    <div class="year-divider-line"></div>
+  </div>
+
+  <div class="timeline" id="timeline-2027"></div>
 
   <!-- 🧗 RAPEL SEMANAL -->
   <div class="rapel">
@@ -720,44 +757,69 @@ const ROTEIROS = [
 ];
 
 // ============================================================
+// 📝 DADOS 2027 — EDITE AQUI!
+// ============================================================
+const ROTEIROS_2027 = [
+  {
+    mes: "Janeiro",
+    numero: "01",
+    eventos: [
+      { data: "23-25", nome: "Trilha Aniversário SP", dificuldade: "medium", tag: "" }
+    ]
+  },
+  {
+    mes: "Fevereiro",
+    numero: "02",
+    eventos: [
+      { data: "18-20", nome: "Carnaval", dificuldade: "easy", tag: "" }
+    ]
+  }
+];
+
+// ============================================================
 // 🔧 GERADOR DOS CARDS — Não precisa editar abaixo desta linha
 // ============================================================
-const timeline = document.getElementById('timeline');
+function gerarCards(containerId, roteiros) {
+  const timeline = document.getElementById(containerId);
 
-ROTEIROS.forEach(mes => {
-  const item = document.createElement('div');
-  item.className = 'month-item';
+  roteiros.forEach(mes => {
+    const item = document.createElement('div');
+    item.className = 'month-item';
 
-  let trailsHTML = '';
-  mes.eventos.forEach(ev => {
-    const levelText = { easy: 'Fácil', medium: 'Moderada', hard: 'Difícil' };
-    const levelLabel = levelText[ev.dificuldade] || '';
-    trailsHTML += `
-      <div class="trail">
-        <div class="trail-date">${ev.data}</div>
-        <div class="trail-name">${ev.nome}</div>
-        ${levelLabel ? `<span class="trail-level ${ev.dificuldade}">${levelLabel}</span>` : ''}
+    let trailsHTML = '';
+    mes.eventos.forEach(ev => {
+      const levelText = { easy: 'Fácil', medium: 'Moderada', hard: 'Difícil' };
+      const levelLabel = levelText[ev.dificuldade] || '';
+      trailsHTML += `
+        <div class="trail">
+          <div class="trail-date">${ev.data}</div>
+          <div class="trail-name">${ev.nome}</div>
+          ${levelLabel ? `<span class="trail-level ${ev.dificuldade}">${levelLabel}</span>` : ''}
+        </div>
+      `;
+    });
+
+    item.innerHTML = `
+      <div class="month-card">
+        <div class="month-header">
+          <div class="month-title">
+            <div class="month-number">${mes.numero}</div>
+            <div class="month-name">${mes.mes}</div>
+          </div>
+          <div class="month-count">${mes.eventos.length} ${mes.eventos.length === 1 ? 'trilha' : 'trilhas'}</div>
+        </div>
+        <div class="trails-list">
+          ${trailsHTML}
+        </div>
       </div>
     `;
+
+    timeline.appendChild(item);
   });
+}
 
-  item.innerHTML = `
-    <div class="month-card">
-      <div class="month-header">
-        <div class="month-title">
-          <div class="month-number">${mes.numero}</div>
-          <div class="month-name">${mes.mes}</div>
-        </div>
-        <div class="month-count">${mes.eventos.length} ${mes.eventos.length === 1 ? 'trilha' : 'trilhas'}</div>
-      </div>
-      <div class="trails-list">
-        ${trailsHTML}
-      </div>
-    </div>
-  `;
-
-  timeline.appendChild(item);
-});
+gerarCards('timeline-2026', ROTEIROS);
+gerarCards('timeline-2027', ROTEIROS_2027);
 </script>
 
 <script>
